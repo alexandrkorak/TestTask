@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearanceLh24spTs16sp" parent="TextTs16sp">
+        <item name="android:lineHeight">24sp</item>
+    </style>
+</resources>

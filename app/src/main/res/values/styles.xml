@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="TextTs16sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextTs20sp" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextTs20spLs.02" parent="TextTs20sp" />
+
+    <style name="TextAppearanceLh24spTs16sp" parent="TextTs16sp">
+        <item name="android:lineSpacingMultiplier">1.5</item>
+    </style>
+
+    <style name="MainTitle" parent="TextAppearanceLh24spTs16sp">
+        <item name="android:textColor">@color/main</item>
+    </style>
+
+
+    <style name="Amount" parent="TextTs20spLs.02">
+        <item name="android:textColor">@color/main</item>
+    </style>
+
+    <style name="MainEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:textAppearance">@style/Amount</item>
+    </style>
+</resources>

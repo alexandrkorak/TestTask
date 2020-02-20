@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextTs20spLs.02" parent="TextTs20sp">
+        <item name="android:letterSpacing">.02</item>
+    </style>
+
+</resources>
