@@ -67,9 +67,11 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         adapter.setListener(listener)
+        viewModel.startUpdates()
     }
 
     override fun onPause() {
+        viewModel.stopUpdates()
         adapter.setListener(null)
         super.onPause()
     }

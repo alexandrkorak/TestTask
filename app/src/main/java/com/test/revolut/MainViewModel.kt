@@ -7,10 +7,8 @@ import com.test.revolut.data.source.CombinedExchangeRatesDataSource
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
-import io.reactivex.SingleSource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import java.math.BigDecimal
 import java.math.MathContext
@@ -22,7 +20,7 @@ class MainViewModel(private val dataSource: CombinedExchangeRatesDataSource) : V
     private val mathContext = MathContext(10)
     private var baseCurrency = "EUR"
 
-    init {
+    fun startUpdates() {
         compositeDisposable.add(Single.fromCallable {
             dataSource.toLocal().getExchangeRates(baseCurrency)
         }
@@ -38,15 +36,17 @@ class MainViewModel(private val dataSource: CombinedExchangeRatesDataSource) : V
         )
     }
 
+    fun stopUpdates() {
+        compositeDisposable.clear()
+    }
+
     private fun getExchangeRatesObservable(): Observable<ExchangeRates> {
         return Observable.interval(1, TimeUnit.SECONDS)
-            .flatMapSingle(object : Function<Any, SingleSource<ExchangeRates>> {
-                override fun apply(t: Any): SingleSource<ExchangeRates> {
-                    return Single.fromCallable {
-                        dataSource.toLocal().getExchangeRates(baseCurrency)
-                    }
+            .flatMapSingle {
+                Single.fromCallable {
+                    dataSource.getExchangeRates(baseCurrency)
                 }
-            })
+            }
     }
 
     private fun subscribeForUpdates() {
